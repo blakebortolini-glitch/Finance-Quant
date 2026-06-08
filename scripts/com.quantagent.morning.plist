@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd agent: run quant-agent every weekday at 8:30 AM (local time).
+  NOTE: launchd uses your Mac's LOCAL time. This is set for 8:30 — if your Mac
+  is NOT on Central Time, change <Hour> so it fires at 8:30 AM CT for you.
+  Market holidays are skipped by the agent's --trading-days-only flag.
+
+  Install:
+    cp scripts/com.quantagent.morning.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.quantagent.morning.plist
+  Uninstall:
+    launchctl bootout gui/$(id -u)/com.quantagent.morning
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.quantagent.morning</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/blakebortolini/quant-agent/scripts/run_morning.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+    </array>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/blakebortolini/quant-agent/logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/blakebortolini/quant-agent/logs/launchd.err.log</string>
+</dict>
+</plist>

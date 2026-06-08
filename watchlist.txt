@@ -1,0 +1,12 @@
+# Quant Agent watchlist — one ticker per line. Blank lines and # comments ignored.
+# Override per run with:  quant-agent run --tickers NVDA AAPL
+AAPL
+NVDA
+MSFT
+GOOGL
+AMZN
+META
+TSLA
+JPM
+V
+AMD

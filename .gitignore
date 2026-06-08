@@ -1,0 +1,41 @@
+# Secrets
+.env
+
+# Local data cache
+data/cache/
+*.parquet
+
+# Generated reports
+reports/*.md
+reports/*.png
+reports/verdict_history.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# uv
+.uv/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+# Logs
+logs/
