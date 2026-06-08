@@ -26,6 +26,8 @@ dependencies = [
     "typer>=0.12",
     "loguru>=0.7",
     "matplotlib>=3.8",         # efficient frontier chart
+    "fastapi>=0.110",          # on-demand scoring worker (Render)
+    "uvicorn[standard]>=0.29", # ASGI server for the worker
 ]
 
 [project.scripts]
