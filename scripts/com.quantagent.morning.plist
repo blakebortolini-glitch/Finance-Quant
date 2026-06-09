@@ -5,8 +5,17 @@
   is NOT on Central Time, change <Hour> so it fires at 8:30 AM CT for you.
   Market holidays are skipped by the agent's --trading-days-only flag.
 
+  Timeout behaviour:
+    TimeOut 2760 (46 min) is the outer safety net — it lets the shell wrapper
+    complete a 20-min first attempt + 5-min wait + 20-min retry before launchd
+    forcibly kills the job.  The per-attempt 20-minute limit is enforced inside
+    run_morning.sh via a bash watchdog (macOS has no system `timeout` binary).
+
   Install:
     cp scripts/com.quantagent.morning.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.quantagent.morning.plist
+  Reload after editing:
+    launchctl bootout  gui/$(id -u)/com.quantagent.morning
     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.quantagent.morning.plist
   Uninstall:
     launchctl bootout gui/$(id -u)/com.quantagent.morning
@@ -30,6 +39,12 @@
         <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
         <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
     </array>
+
+    <!-- Outer kill-switch: terminates the entire job (both run attempts) if
+         it is still alive after 46 minutes.  The per-attempt 20-min timeout
+         is handled in run_morning.sh. -->
+    <key>TimeOut</key>
+    <integer>2760</integer>
 
     <key>RunAtLoad</key>
     <false/>
