@@ -29,7 +29,7 @@ ONDEMAND_SMART_MONEY = os.getenv("ONDEMAND_SMART_MONEY", "false").lower() == "tr
 # US tickers: 1-10 chars, letters plus optional . or - (e.g. BRK.B, RDS-A).
 _TICKER_RE = re.compile(r"^[A-Z][A-Z.\-]{0,9}$")
 
-app = FastAPI(title="Quant Agent Worker")
+app = FastAPI(title="FinQuant Worker")
 
 _inflight: set[str] = set()
 _lock = threading.Lock()

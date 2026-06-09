@@ -1,4 +1,4 @@
-"""Optional authenticated webhook that runs the quant agent on POST.
+"""Optional authenticated webhook that runs FinQuant on POST.
 
 Only needed if you want Vercel's cron to *remotely* trigger a morning run. The
 default setup does NOT need this — the launchd scheduler runs the agent locally

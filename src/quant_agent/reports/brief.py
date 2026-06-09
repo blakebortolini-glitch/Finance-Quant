@@ -127,7 +127,7 @@ def write_markdown(run_result: RunResult) -> str:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     path = REPORTS_DIR / f"{run_result.as_of.isoformat()}_brief.md"
 
-    lines = [f"# Quant Agent — {run_result.as_of.isoformat()} Brief", ""]
+    lines = [f"# FinQuant — {run_result.as_of.isoformat()} Brief", ""]
     for r in run_result.results:
         lines.extend(_block(r))
     path.write_text("\n".join(lines) + "\n")

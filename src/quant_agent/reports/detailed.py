@@ -226,7 +226,7 @@ def write_markdown(run_result: RunResult) -> str:
     path = REPORTS_DIR / f"{run_result.as_of.isoformat()}_detailed.md"
 
     chart = _plot_frontier(run_result)
-    parts = [f"# Quant Agent — {run_result.as_of.isoformat()} Detailed Analysis", ""]
+    parts = [f"# FinQuant — {run_result.as_of.isoformat()} Detailed Analysis", ""]
     for r in run_result.results:
         parts.append(_ticker_block(r))
     parts.append(_portfolio_section(run_result, chart))

@@ -53,7 +53,7 @@ def _transitions(results: list[ScoreResult]) -> list[str]:
 def render_terminal(run_result: RunResult) -> None:
     """Print the summary table to the terminal via rich."""
     console = Console()
-    title = f"QUANT AGENT — {run_result.as_of.isoformat()} Pre-Market"
+    title = f"FINQUANT — {run_result.as_of.isoformat()} Pre-Market"
 
     table = Table(title=title, title_style="bold", header_style="bold")
     table.add_column("TICKER", no_wrap=True)
@@ -103,7 +103,7 @@ def write_markdown(run_result: RunResult) -> str:
     path = REPORTS_DIR / f"{run_result.as_of.isoformat()}_summary.md"
 
     lines = [
-        f"# Quant Agent — {run_result.as_of.isoformat()} Pre-Market",
+        f"# FinQuant — {run_result.as_of.isoformat()} Pre-Market",
         "",
         "| Ticker | Signal | Score | Strength | Confidence |",
         "|---|---|---:|---|---|",

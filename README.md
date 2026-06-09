@@ -1,4 +1,4 @@
-# Quant Agent
+# FinQuant
 
 A production-quality Python agent that runs before market open and produces a
 scannable quantitative analysis report. For each ticker on a configurable
@@ -13,7 +13,7 @@ finance.
 
 ✅ **Operational.** All nine model modules, the composite scoring engine, three
 report tiers, the Smart Money layer (SEC EDGAR), the walk-forward backtest, and a
-morning scheduler are implemented and tested. Installed at `~/quant-agent`.
+morning scheduler are implemented and tested. Agent installed at `~/quant-agent`.
 
 ## Quickstart
 
@@ -215,7 +215,7 @@ uv run mypy src          # type-check
 
 **Milestone 1 (ship first):** scaffold → data fetcher + cache → `gbm.py`
 (validated against Itô moments) → `black_scholes.py` → `capm.py` → partial
-scoring → summary table → `quant-agent run --tickers AAPL`.
+scoring → summary table → `uv run quant-agent run --tickers AAPL`.
 
 **After M1:** Kelly, Markowitz, Itô validation wiring, GARCH, DCF, brief &
 detailed tiers, `--changed-only`, and the walk-forward backtest.

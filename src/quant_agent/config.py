@@ -28,7 +28,7 @@ LOG_LEVEL: str = os.getenv("QUANT_AGENT_LOG_LEVEL", "INFO")
 
 # SEC EDGAR requires a contact identity ("Name email") on every request.
 # Override in .env via EDGAR_IDENTITY; falls back to the project owner's contact.
-EDGAR_IDENTITY: str = os.getenv("EDGAR_IDENTITY", "Quant Agent blakebortolini@gmail.com")
+EDGAR_IDENTITY: str = os.getenv("EDGAR_IDENTITY", "FinQuant blakebortolini@gmail.com")
 
 # Supabase sink (optional). The project URL is public (also baked into the
 # frontend), so it has a sensible default; the SERVICE ROLE key is a secret and
