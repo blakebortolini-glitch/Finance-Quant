@@ -23,6 +23,7 @@ REPORTS_DIR: Path = PROJECT_ROOT / "reports"
 # --------------------------------------------------------------------------- #
 # Secrets / environment
 # --------------------------------------------------------------------------- #
+FMP_API_KEY: str | None = os.getenv("FMP_API_KEY")   # Financial Modeling Prep
 FRED_API_KEY: str | None = os.getenv("FRED_API_KEY")
 LOG_LEVEL: str = os.getenv("QUANT_AGENT_LOG_LEVEL", "INFO")
 
@@ -51,9 +52,9 @@ FRED_RISK_FREE_SERIES: str = "DGS3MO"   # 3-month T-bill yield
 FRED_CPI_SERIES: str = "CPIAUCSL"       # CPI, all urban consumers
 FRED_SOFR_SERIES: str = "SOFR"
 
-# Sectors (yfinance .info["sector"]) where the Altman Z-Score is unreliable —
-# it was calibrated for manufacturers. Banks/insurance live in "Financial
-# Services"; REITs in "Real Estate". For these the Altman signal is skipped.
+# Sectors where the Altman Z-Score is unreliable — it was calibrated for
+# manufacturers. Banks/insurance live in "Financial Services"; REITs in
+# "Real Estate". FMP profile["sector"] uses the same sector strings as yfinance.
 FINANCIAL_SECTORS: frozenset[str] = frozenset({"Financial Services", "Real Estate"})
 
 # Fallback macro values if FRED is unavailable (annualized, decimal).
