@@ -325,6 +325,14 @@ def run(
         f"+ {len(scored) - len(watchlist_set & set(scored))} holdings-only)"
     )
 
+    # --- Plaid auto-sync: refresh all users' holdings before scoring -------- #
+    # Runs silently on failure so one bad Plaid token never aborts the run.
+    try:
+        from quant_agent.data import plaid_sync
+        plaid_sync.sync_all_plaid_connections()
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(f"Plaid auto-sync failed (non-fatal, scoring continues): {exc}")
+
     # --- Smart Money: fetch tracked-fund 13F holdings once for the run ----- #
     funds: list[dict] = []
     if smart_money_enabled:
